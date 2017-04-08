@@ -22,7 +22,7 @@ class CNNTrainer(object):
         self.data_size = self.patch_in.shape[0]
 
     def init_param(self, layer_depth=32, layer_num=8, input_size=21, input_depth=1 ,
-                  kernel_size=3, USE_POOL = False, USE_NORM = False,reload = False,batch_size = 64):
+                  kernel_size=3, keep_prob_value = 1.0, USE_POOL = False, USE_NORM = False,reload = False,batch_size = 64,itr_num=200000,save_step=500):
 
         self.layer_depth = layer_depth
         self.layer_num = layer_num
@@ -32,11 +32,11 @@ class CNNTrainer(object):
         self.USE_POOL = USE_POOL
         self.USE_NORM = USE_NORM
         self.learning_rate = 1e-4
-        self.keep_prob_value = 1
+        self.keep_prob_value = keep_prob_value
         self.reload = reload
-        self.itr_num = 1000000
-        self.save_step = batch_size
-        self.batch_size = 64
+        self.itr_num = itr_num
+        self.save_step = save_step
+        self.batch_size = batch_size
 
     def setup_frame(self):
         self.sess = tf.InteractiveSession()
@@ -46,14 +46,16 @@ class CNNTrainer(object):
 
     def restoring(self):
         self.sess.run(tf.global_variables_initializer())
-
         self.saver = tf.train.Saver()
         self.saver.restore(self.sess, self.model_load_file)
 
-        X = self.patch_in
-        Y = self.patch_out
-        feed_dict = {self.net_input_holder: X, self.net_output_holder: Y, self.keep_prob: self.keep_prob_value}
-        return self.sess.run([self.net_output_calc], feed_dict=feed_dict)
+        result = [p for p in self.patch_in]
+        for i in range(0, self.data_size, self.batch_size):
+            X = self.patch_in[i:i+self.batch_size]
+            Y = self.patch_out[i:i+self.batch_size]
+            feed_dict = {self.net_input_holder: X, self.net_output_holder: Y, self.keep_prob: self.keep_prob_value}
+            result[i:i+self.batch_size] = self.sess.run([self.net_output_calc], feed_dict=feed_dict)[0][:]
+        return result
 
     def training(self):
 
