@@ -359,21 +359,12 @@ if __name__ == "__main__":
     print ("训练数据共有%d" % len(training_data[0]))
     input = training_data[0]
     output = training_data[1]
-    # for i in range(100):
-    #     plt.subplot(131)
-    #     plt.imshow(input[i])
-    #     plt.subplot(132)
-    #     plt.imshow(output[i])
-    #     plt.subplot(133)
-    #     plt.imshow(output[i] + input[i])
-    #     plt.show()
 
-    #
     with tf.Graph().as_default():
-        tr = SRTrainerDecon3(model_save_file="E:/mySuperResolution/dataset/Y_291_decon_v3_with_drop",
-                       model_load_file="E:/mySuperResolution/dataset/test_291-99500",
+        tr = SRTrainerDecon3(model_save_file="E:/mySuperResolution/dataset/Y_291_decon_v3_with_drop_seg2",
+                       model_load_file="E:/mySuperResolution/dataset/Y_291_decon_v3_with_drop-0",
                        model_tag=0)
-        tr.init_param(layer_depth=32,layer_num=8, input_size=21,keep_prob_value = 0.95)
+        tr.init_param(layer_depth=32,layer_num=8, input_size=21,keep_prob_value = 0.85)
         tr.set_data(input,output)
         tr.setup_frame()
         tr.training()

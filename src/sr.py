@@ -67,7 +67,7 @@ class Retore(object):
             residual_patch_list.append(residual_patch_list[0])
         tr.set_data(np.array(lr_patch_list), np.array(residual_patch_list))
         restore_patch_list = tr.restoring()[0:tmp_len]
-        restore_patch_list = [np.reshape(patch,(21,21)) for patch in restore_patch_list]
+        restore_patch_list = [np.reshape(patch,(patch_size, patch_size)) for patch in restore_patch_list]
 
         i = 0
         for x in xgrid:
@@ -82,19 +82,6 @@ class Retore(object):
         img_restored = cv2.cvtColor(img_ycrcb_l, cv2.COLOR_YCR_CB2BGR, None)
         print("灰度图像的psnr%.2f" % psnr(img_ycrcb_l[:, :, 0], img_ycrcb_h[:, :, 0]))
         return img_restored * 255
-
-# def psnr(img1,img2, m = 1.17):
-#     img2 = 1.0* img2/ m
-#     img1 = 1.0* img1/ m
-#     s = img1.shape
-#     si = 1
-#     if len(s) ==3:
-#         si = s[0] * s[1] * s[2]
-#     if len(s) ==2:
-#         si = s[0] * s[1]
-#     E = img1 - img2
-#     mse = np.sum(np.power(E,2.0) )
-#     return 10.0 * math.log10( si * 1.0 / mse)
 
 
 def psnr(target, ref, scale = 3):
@@ -113,7 +100,7 @@ def psnr(target, ref, scale = 3):
 import os
 def restore_dir(dir):
     file_list = os.listdir(dir)
-    result_dir = dir +"/"+ "cnn_restore_decon3/"
+    result_dir = dir +"/"+ "cnn_restore_deep2/"
     if not os.path.exists(result_dir):
         os.mkdir(result_dir)
     r = Retore()
@@ -122,12 +109,15 @@ def restore_dir(dir):
     with tf.device("/gpu:0"):
         with tf.Graph().as_default():
             tr = SRTrainerDecon3(model_save_file="E:/mySuperResolution/dataset/test_291",
-                            model_load_file="E:/mySuperResolution/dataset/Y_291_decon_v3-0",
+                            model_load_file="E:/mySuperResolution/dataset/Y_291_decon_v3_with_drop_seg2-0",
                             model_tag=0)
+            tr = SRTrainerDeconDeep(model_save_file="E:/mySuperResolution/dataset/test_291",
+                                 model_load_file="E:/mySuperResolution/dataset/Y_291_decon_v3_deep-0",
+                                 model_tag=0)
             # tr = SRTrainer(model_save_file="E:/mySuperResolution/dataset/test_291",
             #                    model_load_file="E:/mySuperResolution/dataset/Y_291_decon_v2-0",
             #                    model_tag=0)
-            tr.init_param(batch_size=32,layer_num=8, input_size=21)
+            tr.init_param(layer_depth=64,layer_num=18, input_size=41)
             tr.setup_frame()
             for file_name in file_list:
                 if file_name[-3:] != "bmp" and file_name[-3:] != "jpg":
@@ -136,7 +126,7 @@ def restore_dir(dir):
                 img = cv2.imread(dir + "/" + file_name)
 
                 img = img[0: img.shape[0] - img.shape[0] % 3, 0: img.shape[1] - img.shape[1] % 3, :]
-                img_restored = r.super_resolution_image(img, tr)
+                img_restored = r.super_resolution_image(img, tr, patch_size=41)
                 tmp_psnr = psnr(img/255.0 , img_restored/255.0)
                 print("RGB图像的psnr%.2f" % tmp_psnr)
                 # 进行保存和统计
@@ -147,37 +137,5 @@ def restore_dir(dir):
             print(psnr_sum / image_num)
 
 if __name__ == '__main__':
-    # a = cv2.imread("E:\\mySuperResolution\\dataset\\Set14\\results_Set14_x3_1024atoms\\monarch[1-Original].bmp")
-    # a = a[:a.shape[0] - a.shape[0]%3, :a.shape[1] - a.shape[1]%3]
-    # b = cv2.imread("E:\\mySuperResolution\\dataset\\Set14\\results_Set14_x3_1024atoms\\monarch[12-JOR].bmp")
-    # c = cv2.imread("E:\\mySuperResolution\\dataset\\Set14\\cnn_restore\\monarch[1-Original].bmp")
-    # d = cv2.imread("E:\\mySuperResolution\\dataset\\Set14\\results_Set14_x3_1024atoms\\monarch[2-Bicubic].bmp")
-    #
-    #
-    # # 使用scipy的bicubic线性插值的结果
-    # print(" 使用scipy的bicubic线性插值的结果")
-    # a_l = imresize(a,1/3.0, interp='bicubic')
-    # a_r = imresize(a_l,  3.0, interp='bicubic')
-    # print (psnr(a/255.0,a_r*1.0/255.0))
-    # print(psnr(toYchannel(a), toYchannel(a_r)))
-    #
-    # # 使用opencv的bicubic线性插值的结果
-    # print(" 使用opencv的bicubic线性插值的结果")
-    # a_l = cv2.resize(a, (0, 0), None, 1.0 / 3, 1.0 / 3)
-    # a_r = cv2.resize(a_l, (0, 0), None, 3, 3, interpolation=cv2.INTER_CUBIC)
-    # print(psnr(a/255.0, a_r/255.0))
-    # print(psnr(toYchannel(a), toYchannel(a_r)))
-    #
-    # print("JOR")
-    # print(psnr(a[:504,:762,:]/255.0 ,b/255.0))
-    # print(psnr(toYchannel(a), toYchannel(b)))
-    # # 在lab空间用opencv  bicubic插值的结果
-    # print("在Ycbcr空间用opencv cnn插值的结果")
-    # print(psnr(a/255.0 ,c/255.0))
-    # print(psnr(toYchannel(a), toYchannel(c)))
-    #
-    # print("在Bicubic的结果")
-    # print(psnr(d/255.0 ,a*1.0/255.0 ))
-    # print(psnr(toYchannel(a), toYchannel(d)))
 
-    restore_dir("E:\\mySuperResolution\\dataset\\Set5")
+    restore_dir("E:\\mySuperResolution\\dataset\\Set14")
