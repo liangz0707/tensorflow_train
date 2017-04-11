@@ -1,6 +1,7 @@
 # coding:utf-8
 import tensorflow as tf
 import numpy as np
+import super_restore as sr
 
 class CNNTrainer(object):
     def __init__(self, model_save_file="", model_load_file="", model_tag=0):
@@ -21,8 +22,15 @@ class CNNTrainer(object):
         self.patch_out = np.reshape(output, (-1, self.input_size, self.input_size, self.input_depth))
         self.data_size = self.patch_in.shape[0]
 
+    def set_test_data(self, input ,output):
+        self.test_in = np.reshape(input, (-1, self.input_size, self.input_size, self.input_depth))
+        self.test_out = np.reshape(output, (-1, self.input_size, self.input_size, self.input_depth))
+        self.test_data_size = self.test_in.shape[0]
+
     def init_param(self, layer_depth=32, layer_num=8, input_size=21, input_depth=1 ,
-                  kernel_size=3, keep_prob_value = 1.0, USE_POOL = False, USE_NORM = False,reload = False,batch_size = 64,itr_num=200000,save_step=500):
+                  kernel_size=3, keep_prob_value = 1.0, USE_POOL = False, USE_NORM = False,
+                   reload = False,batch_size = 64,itr_num=200000,save_step=500, test_dir="", test_result_pefix="",
+                   learning_rate=1e-4):
 
         self.layer_depth = layer_depth
         self.layer_num = layer_num
@@ -31,12 +39,14 @@ class CNNTrainer(object):
         self.kernel_size = kernel_size
         self.USE_POOL = USE_POOL
         self.USE_NORM = USE_NORM
-        self.learning_rate = 1e-4
+        self.learning_rate = learning_rate
         self.keep_prob_value = keep_prob_value
         self.reload = reload
         self.itr_num = itr_num
         self.save_step = save_step
         self.batch_size = batch_size
+        self.test_dir = test_dir
+        self.test_result_pefix=test_result_pefix
 
     def setup_frame(self):
         self.sess = tf.InteractiveSession()
@@ -45,14 +55,11 @@ class CNNTrainer(object):
         self.loss()
 
     def restoring(self):
-        self.sess.run(tf.global_variables_initializer())
-        self.saver = tf.train.Saver()
-        self.saver.restore(self.sess, self.model_load_file)
 
-        result = [p for p in self.patch_in]
-        for i in range(0, self.data_size, self.batch_size):
-            X = self.patch_in[i:i+self.batch_size]
-            Y = self.patch_out[i:i+self.batch_size]
+        result = [p for p in self.test_in]
+        for i in range(0, self.test_data_size, self.batch_size):
+            X = self.test_in[i:i+self.batch_size]
+            Y = self.test_out[i:i+self.batch_size]
             feed_dict = {self.net_input_holder: X, self.net_output_holder: Y, self.keep_prob: self.keep_prob_value}
             result[i:i+self.batch_size] = self.sess.run([self.net_output_calc], feed_dict=feed_dict)[0][:]
         return result
@@ -76,13 +83,13 @@ class CNNTrainer(object):
 
             _, loss_value = self.sess.run([train_step, self.l2_loss], feed_dict=feed_dict)
 
-            if i % self.save_step == 0:
+            if i % self.save_step == 0 and i > 0:
+                if self.test_dir != "":
+                    sr.restore_dir(self.test_dir, self, self.test_result_pefix)
+
                 self.saver.save(self.sess, self.model_save_file, global_step=self.model_tag)
-
                 feed_dict = {self.net_input_holder: X, self.net_output_holder: Y, self.keep_prob: 1.0}
-
                 ac = self.sess.run(self.error, feed_dict=feed_dict)
-
                 print('Step %d: loss = %.2f (%.3f )' % (i, loss_value, ac))
     '''
     操作简化函数
