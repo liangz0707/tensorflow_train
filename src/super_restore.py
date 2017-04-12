@@ -1,11 +1,8 @@
 # coding:utf-8
 import cv2
 from scipy.misc import imresize
-import configparser
 import time
 import os
-import numpy as np
-import tensorflow as tf
 from data_utils import *
 
 class Retore(object):
@@ -51,8 +48,7 @@ class Retore(object):
             for y in ygrid:
                 m = np.mean(hr_bicubic_y_channel[x:x + patch_size, y:y + patch_size])
                 lr_mean_list.append(m)
-                lr_patch_list.append(hr_bicubic_y_channel[x:x + patch_size, y:y + patch_size] - m)
-                #lr_patch_list.append(hr_bicubic_y_channel[x:x + patch_size, y:y + patch_size])
+                lr_patch_list.append(hr_bicubic_y_channel[x:x + patch_size, y:y + patch_size])
                 # 这个数据只有在训练的时候才有用，所以这里没有用处
                 residual_patch_list.append(hr_bicubic_y_channel[x:x + patch_size, y:y + patch_size])
 
@@ -78,6 +74,26 @@ class Retore(object):
         # print("灰度图像的psnr%.2f" % psnr(img_ycrcb_l[:, :, 0], img_ycrcb_h[:, :, 0]))
         return img_restored * 255
 
+    def super_resolution_image2(self, img_h):
+        tr = self.model
+        patch_size = tr.input_size
+        over_lap = self.over_lap
+        scale = self.scale
+
+        img_low = imresize(img_h, 1 / scale, interp='bicubic')
+        img_l = imresize(img_low, scale, interp='bicubic')
+
+        img_ycrcb_h = cv2.cvtColor(np.array(img_h / 255.0,dtype=np.float32), cv2.COLOR_BGR2YCR_CB)
+        img_ycrcb_l = cv2.cvtColor(np.array(img_l / 255.0,dtype=np.float32), cv2.COLOR_BGR2YCR_CB)
+
+        hr_bicubic_y_channel = img_ycrcb_l[:, :, 0]
+
+        size = hr_bicubic_y_channel.shape
+
+
+        img_restored = cv2.cvtColor(img_ycrcb_l, cv2.COLOR_YCR_CB2BGR, None)
+        # print("灰度图像的psnr%.2f" % psnr(img_ycrcb_l[:, :, 0], img_ycrcb_h[:, :, 0]))
+        return img_restored * 255
 
 def restore_dir(dir, tr, store_path=""):
     if store_path == "":
@@ -89,7 +105,7 @@ def restore_dir(dir, tr, store_path=""):
         os.mkdir(result_dir)
 
     r = Retore()
-    r.init_param(tr,scale = 3.0)
+    r.init_param(tr,scale = 3.0,over_lap=0)
     psnr_sum = 0.0
     ssim_sum = 0.0
     time_sum = 0.0
@@ -121,34 +137,3 @@ def restore_dir(dir, tr, store_path=""):
     print("*************************************************************")
 
 
-if __name__ == '__main__':
-    cf = configparser.ConfigParser()
-    cf.read("trainer.conf")
-    layer_depth = cf.getint("db", "layer_depth")
-    layer_num = cf.getint("db", "layer_num")
-    batch_size = cf.getint("db", "batch_size")
-    keep_prob_value = cf.getfloat("db", "keep_prob_value")
-    con_num = cf.getint("db", "con_num")
-    decon_num = cf.getint("db", "decon_num")
-    input_size = cf.getint("db", "input_size")
-    test_dir = cf.get("db", "test_dir")
-    model_file = cf.get("db", "model_file")
-    model_save_file = cf.get("db", "model_save_file")
-    model_tag =  cf.getint("db", "model_tag")
-    save_step =  cf.getint("db", "save_step")
-    reload = cf.getboolean("db","reload")
-
-    with tf.device("/gpu:0"):
-        with tf.Graph().as_default():
-            tr = SRTrainerDeconDeep(model_save_file=model_save_file,
-                                    model_load_file=model_file,
-                                    model_tag=model_tag)
-            tr.init_param(layer_depth=layer_depth, layer_num=layer_num, input_size=input_size, batch_size=batch_size,
-                          keep_prob_value=keep_prob_value,con_num=con_num, decon_num=decon_num,save_step=save_step,
-                          reload = reload)
-            tr.setup_frame()
-            tr.sess.run(tf.global_variables_initializer())
-            tr.saver = tf.train.Saver()
-            tr.saver.restore(tr.sess, tr.model_load_file)
-
-            restore_dir(test_dir,tr)

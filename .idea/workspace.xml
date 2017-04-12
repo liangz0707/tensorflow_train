@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b448fe35-7c13-44b8-b87d-2ce6493aa8ff" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/super_restore.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/trainer.conf" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/patch_rotation.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/rotated_patch.cp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sr.py" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/image_restore.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data_utils.py" afterPath="$PROJECT_DIR$/src/data_utils.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/super_restore.py" afterPath="$PROJECT_DIR$/src/super_restore.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/super_trainer.py" afterPath="$PROJECT_DIR$/src/super_trainer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/trainer.conf" afterPath="$PROJECT_DIR$/src/trainer.conf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/trainer.py" afterPath="$PROJECT_DIR$/src/trainer.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,82 +20,113 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/tensorflow_train$main.coverage" NAME="main Coverage Results" MODIFIED="1490791999767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/tensorflow_train$sr.coverage" NAME="sr Coverage Results" MODIFIED="1491892738311" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/tensorflow_train$data_generater.coverage" NAME="data_generater Coverage Results" MODIFIED="1491985198805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/tensorflow_train$image_restore.coverage" NAME="image_restore Coverage Results" MODIFIED="1491990817559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/tensorflow_train$BACK.coverage" NAME="BACK Coverage Results" MODIFIED="1490782269766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/tensorflow_train$patch_rotation.coverage" NAME="patch_rotation Coverage Results" MODIFIED="1490954400623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/tensorflow_train$super_trainer.coverage" NAME="super_trainer Coverage Results" MODIFIED="1491899906530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/tensorflow_train$super_trainer.coverage" NAME="super_trainer Coverage Results" MODIFIED="1491997963942" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="trainer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/trainer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1298">
-              <caret line="63" column="38" lean-forward="false" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="38" />
-              <folding>
-                <element signature="e#15#38#0" expanded="true" />
-                <element signature="e#198#318#0" expanded="false" />
-                <element signature="e#3938#4163#0" expanded="false" />
-                <element signature="e#4448#4613#0" expanded="false" />
-                <element signature="e#4681#4809#0" expanded="false" />
-                <element signature="e#4956#7506#0" expanded="false" />
-                <element signature="e#7122#7459#0" expanded="false" />
-                <element signature="e#7657#7855#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="super_restore.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/super_restore.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="120" column="10" lean-forward="false" selection-start-line="120" selection-start-column="10" selection-end-line="120" selection-end-column="10" />
-              <folding>
-                <element signature="e#15#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="trainer.conf" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/trainer.conf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="5" column="11" lean-forward="true" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="super_trainer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/super_trainer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3124">
-              <caret line="142" column="21" lean-forward="true" selection-start-line="142" selection-start-column="21" selection-end-line="142" selection-end-column="21" />
-              <folding>
-                <element signature="e#15#46#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data_utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/data_utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="15" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.8039807">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+          <file leaf-file-name="trainer.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/trainer.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="170">
+                  <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#15#38#0" expanded="true" />
+                    <element signature="e#4491#4656#0" expanded="false" />
+                    <element signature="e#4724#4852#0" expanded="false" />
+                    <element signature="e#4999#7549#0" expanded="false" />
+                    <element signature="e#7165#7502#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="trainer.conf" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/trainer.conf">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="374">
+                  <caret line="17" column="17" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="17" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="super_restore.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/super_restore.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="2376">
+                  <caret line="138" column="0" lean-forward="true" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#15#25#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="image_restore.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/image_restore.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="550">
+                  <caret line="25" column="31" lean-forward="false" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+                  <folding>
+                    <element signature="e#15#42#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="super_trainer.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/super_trainer.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
+                  <folding>
+                    <element signature="e#15#36#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="data_utils.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/data_utils.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-1791">
+                  <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+                  <folding>
+                    <element signature="e#0#10#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+          <file leaf-file-name="VDSR.py" pinned="false" current-in-tab="true">
+            <entry file="file://E:/tensorflow-vdsr/VDSR.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="186">
+                  <caret line="180" column="60" lean-forward="false" selection-start-line="180" selection-start-column="44" selection-end-line="180" selection-end-column="60" />
+                  <folding>
+                    <element signature="e#0#59#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -108,32 +137,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>logits</find>
-      <find>learning_rate</find>
-      <find>loss</find>
-      <find>cPickle</find>
-      <find>pickle</find>
-      <find>load_model_file</find>
-      <find>calc</find>
-      <find>net_output_calc</find>
-      <find>assert</find>
-      <find>ass</find>
-      <find>load</find>
       <find>rotate_list</find>
       <find>getG</find>
       <find>save_step</find>
       <find>psnr</find>
-      <find>batch_size</find>
       <find>batch</find>
       <find>batch_sizelayer_depth=32,layer_num=4, input_size=21</find>
       <find>Session</find>
-      <find>sess</find>
       <find>keep_prob_value</find>
       <find>21</find>
       <find>64</find>
       <find>restore</find>
       <find>32</find>
       <find>reload</find>
+      <find>test_result_pefix</find>
+      <find>imresize</find>
+      <find>train_list</find>
+      <find>get_image_batch</find>
+      <find>patch</find>
+      <find>patch_size</find>
+      <find>weights</find>
+      <find>kernel_size</find>
+      <find>saver</find>
+      <find>sess</find>
+      <find>load_and_enqueue</find>
+      <find>batch_size</find>
+      <find>shuf</find>
+      <find>load_training_data</find>
+      <find>model_file</find>
+      <find>input_size</find>
+      <find>lr_patch_list</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -153,11 +186,15 @@
         <option value="$PROJECT_DIR$/src/superresulution_trainer.py" />
         <option value="$PROJECT_DIR$/src/patch_rotation.py" />
         <option value="$PROJECT_DIR$/src/sr.py" />
-        <option value="$PROJECT_DIR$/src/data_utils.py" />
-        <option value="$PROJECT_DIR$/src/super_trainer.py" />
+        <option value="E:/tensorflow-vdsr/VDSR.py" />
+        <option value="E:/tensorflow-vdsr/TEST.py" />
+        <option value="$PROJECT_DIR$/src/image_restore.py" />
+        <option value="$PROJECT_DIR$/src/data_generater.py" />
         <option value="$PROJECT_DIR$/src/trainer.conf" />
         <option value="$PROJECT_DIR$/src/super_restore.py" />
         <option value="$PROJECT_DIR$/src/trainer.py" />
+        <option value="$PROJECT_DIR$/src/data_utils.py" />
+        <option value="$PROJECT_DIR$/src/super_trainer.py" />
       </list>
     </option>
   </component>
@@ -168,7 +205,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-10" />
+    <option name="x" value="-3" />
     <option name="width" value="1924" />
     <option name="height" value="1047" />
   </component>
@@ -187,7 +224,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -217,13 +253,14 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/mySuperResolution" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -248,24 +285,6 @@
       <module name="tensorflow_train" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="E:\tensorflow_train\src\super_restore.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="BACK" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="tensorflow_train" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/BACK.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -302,6 +321,42 @@
       <module name="tensorflow_train" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/patch_rotation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="image_restore" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="tensorflow_train" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/image_restore.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="data_generater" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="tensorflow_train" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/data_generater.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -538,19 +593,21 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <list size="5">
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.main" />
       <item index="1" class="java.lang.String" itemvalue="Python.sr" />
-      <item index="2" class="java.lang.String" itemvalue="Python.BACK" />
-      <item index="3" class="java.lang.String" itemvalue="Python.super_trainer" />
-      <item index="4" class="java.lang.String" itemvalue="Python.patch_rotation" />
+      <item index="2" class="java.lang.String" itemvalue="Python.super_trainer" />
+      <item index="3" class="java.lang.String" itemvalue="Python.patch_rotation" />
+      <item index="4" class="java.lang.String" itemvalue="Python.image_restore" />
+      <item index="5" class="java.lang.String" itemvalue="Python.data_generater" />
     </list>
     <recent_temporary>
-      <list size="4">
+      <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.super_trainer" />
-        <item index="1" class="java.lang.String" itemvalue="Python.sr" />
-        <item index="2" class="java.lang.String" itemvalue="Python.patch_rotation" />
-        <item index="3" class="java.lang.String" itemvalue="Python.BACK" />
+        <item index="1" class="java.lang.String" itemvalue="Python.image_restore" />
+        <item index="2" class="java.lang.String" itemvalue="Python.data_generater" />
+        <item index="3" class="java.lang.String" itemvalue="Python.sr" />
+        <item index="4" class="java.lang.String" itemvalue="Python.patch_rotation" />
       </list>
     </recent_temporary>
   </component>
@@ -572,7 +629,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491644299054</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="进行了代码重构得到了更简洁 方便的代码">
+      <created>1491900311227</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1491900311227</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -585,20 +649,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-10" y="0" width="1924" height="1047" extended-state="0" />
+    <frame x="-3" y="0" width="1924" height="1047" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12648009" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16307858" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925472" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3270925" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3926585" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41379312" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15088105" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39867842" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35792953" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -639,93 +703,19 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="实现了多重网络结构，并能进行运行" />
-    <option name="LAST_COMMIT_MESSAGE" value="实现了多重网络结构，并能进行运行" />
+    <MESSAGE value="进行了代码重构得到了更简洁 方便的代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="进行了代码重构得到了更简洁 方便的代码" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/super_trainer.py</url>
-          <line>126</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="8" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/super_restore.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#15#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/super_trainer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6314">
-          <caret line="289" column="48" lean-forward="false" selection-start-line="289" selection-start-column="47" selection-end-line="289" selection-end-column="48" />
-          <folding>
-            <element signature="e#15#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/trainer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1232">
-          <caret line="57" column="8" lean-forward="false" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
-          <folding>
-            <element signature="e#15#38#0" expanded="true" />
-            <element signature="e#198#318#0" expanded="false" />
-            <element signature="e#3938#4163#0" expanded="false" />
-            <element signature="e#4448#4613#0" expanded="false" />
-            <element signature="e#4681#4809#0" expanded="false" />
-            <element signature="e#4956#7506#0" expanded="false" />
-            <element signature="e#7122#7459#0" expanded="false" />
-            <element signature="e#7657#7855#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/super_restore.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#15#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/super_trainer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-          <folding>
-            <element signature="e#15#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/patch_rotation.py" />
     <entry file="file://$PROJECT_DIR$/src/data_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -742,13 +732,10 @@
           <caret line="57" column="8" lean-forward="false" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
           <folding>
             <element signature="e#15#38#0" expanded="true" />
-            <element signature="e#198#318#0" expanded="false" />
-            <element signature="e#3938#4163#0" expanded="false" />
-            <element signature="e#4448#4613#0" expanded="false" />
-            <element signature="e#4681#4809#0" expanded="false" />
-            <element signature="e#4956#7506#0" expanded="false" />
-            <element signature="e#7122#7459#0" expanded="false" />
-            <element signature="e#7657#7855#0" expanded="false" />
+            <element signature="e#4491#4656#0" expanded="false" />
+            <element signature="e#4724#4852#0" expanded="false" />
+            <element signature="e#4999#7549#0" expanded="false" />
+            <element signature="e#7165#7502#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -768,7 +755,7 @@
         <state relative-caret-position="220">
           <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
           <folding>
-            <element signature="e#15#46#0" expanded="true" />
+            <element signature="e#15#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -790,13 +777,10 @@
           <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding>
             <element signature="e#15#38#0" expanded="true" />
-            <element signature="e#198#318#0" expanded="false" />
-            <element signature="e#3938#4163#0" expanded="false" />
-            <element signature="e#4448#4613#0" expanded="false" />
-            <element signature="e#4681#4809#0" expanded="false" />
-            <element signature="e#4956#7506#0" expanded="false" />
-            <element signature="e#7122#7459#0" expanded="false" />
-            <element signature="e#7657#7855#0" expanded="false" />
+            <element signature="e#4491#4656#0" expanded="false" />
+            <element signature="e#4724#4852#0" expanded="false" />
+            <element signature="e#4999#7549#0" expanded="false" />
+            <element signature="e#7165#7502#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -816,7 +800,7 @@
         <state relative-caret-position="264">
           <caret line="12" column="30" lean-forward="false" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
           <folding>
-            <element signature="e#15#46#0" expanded="true" />
+            <element signature="e#15#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -838,13 +822,10 @@
           <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding>
             <element signature="e#15#38#0" expanded="true" />
-            <element signature="e#198#318#0" expanded="false" />
-            <element signature="e#3938#4163#0" expanded="false" />
-            <element signature="e#4448#4613#0" expanded="false" />
-            <element signature="e#4681#4809#0" expanded="false" />
-            <element signature="e#4956#7506#0" expanded="false" />
-            <element signature="e#7122#7459#0" expanded="false" />
-            <element signature="e#7657#7855#0" expanded="false" />
+            <element signature="e#4491#4656#0" expanded="false" />
+            <element signature="e#4724#4852#0" expanded="false" />
+            <element signature="e#4999#7549#0" expanded="false" />
+            <element signature="e#7165#7502#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -875,7 +856,7 @@
         <state relative-caret-position="352">
           <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
           <folding>
-            <element signature="e#15#46#0" expanded="true" />
+            <element signature="e#15#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -895,7 +876,7 @@
         <state relative-caret-position="352">
           <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
           <folding>
-            <element signature="e#15#46#0" expanded="true" />
+            <element signature="e#15#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -915,7 +896,7 @@
         <state relative-caret-position="352">
           <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
           <folding>
-            <element signature="e#15#46#0" expanded="true" />
+            <element signature="e#15#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -935,7 +916,7 @@
         <state relative-caret-position="352">
           <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
           <folding>
-            <element signature="e#15#46#0" expanded="true" />
+            <element signature="e#15#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -955,7 +936,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#15#46#0" expanded="true" />
+            <element signature="e#15#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -965,7 +946,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#15#46#0" expanded="true" />
+            <element signature="e#15#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -975,7 +956,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#15#46#0" expanded="true" />
+            <element signature="e#15#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1054,55 +1035,112 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/trainer.py">
+    <entry file="file://D:/miniConda/envs/tenserflow/Lib/site-packages/tensorflow/python/client/session.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1298">
-          <caret line="63" column="38" lean-forward="false" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="38" />
+        <state relative-caret-position="361">
+          <caret line="943" column="0" lean-forward="false" selection-start-line="943" selection-start-column="0" selection-end-line="943" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/tensorflow-vdsr/MODEL.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="3" column="22" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/tensorflow-vdsr/TEST.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1342">
+          <caret line="94" column="24" lean-forward="false" selection-start-line="94" selection-start-column="24" selection-end-line="94" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/tensorflow-vdsr/VDSR.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="180" column="60" lean-forward="false" selection-start-line="180" selection-start-column="44" selection-end-line="180" selection-end-column="60" />
           <folding>
-            <element signature="e#15#38#0" expanded="true" />
-            <element signature="e#198#318#0" expanded="false" />
-            <element signature="e#3938#4163#0" expanded="false" />
-            <element signature="e#4448#4613#0" expanded="false" />
-            <element signature="e#4681#4809#0" expanded="false" />
-            <element signature="e#4956#7506#0" expanded="false" />
-            <element signature="e#7122#7459#0" expanded="false" />
-            <element signature="e#7657#7855#0" expanded="false" />
+            <element signature="e#0#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/trainer.conf">
+    <entry file="file://$PROJECT_DIR$/src/trainer2.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="11" lean-forward="true" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data_generater.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/super_trainer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3124">
-          <caret line="142" column="21" lean-forward="true" selection-start-line="142" selection-start-column="21" selection-end-line="142" selection-end-column="21" />
+        <state relative-caret-position="0">
+          <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
           <folding>
-            <element signature="e#15#46#0" expanded="true" />
+            <element signature="e#15#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/data_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="15" />
+        <state relative-caret-position="-1791">
+          <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/image_restore.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="25" column="31" lean-forward="false" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+          <folding>
+            <element signature="e#15#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/trainer.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" column="17" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/trainer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+          <folding>
+            <element signature="e#15#38#0" expanded="true" />
+            <element signature="e#4491#4656#0" expanded="false" />
+            <element signature="e#4724#4852#0" expanded="false" />
+            <element signature="e#4999#7549#0" expanded="false" />
+            <element signature="e#7165#7502#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/super_restore.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="120" column="10" lean-forward="false" selection-start-line="120" selection-start-column="10" selection-end-line="120" selection-end-column="10" />
+        <state relative-caret-position="2376">
+          <caret line="138" column="0" lean-forward="true" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
           <folding>
             <element signature="e#15#25#0" expanded="true" />
           </folding>

@@ -1,21 +1,15 @@
 # coding:utf-8
-import matplotlib.pyplot as plt
 from trainer import *
 from data_utils import *
-import configparser
 import sys
-import super_restore
-
-class SRTrainer(CNNTrainer):
-
-    def __init__(self, model_save_file="", model_load_file="", model_tag=0):
-        CNNTrainer.__init__(self,model_save_file=model_save_file, model_load_file=model_load_file, model_tag=model_tag)
-
 
 class SRTrainerDeconDeep(CNNTrainer):
 
     def __init__(self, model_save_file="", model_load_file="", model_tag=0):
         CNNTrainer.__init__(self,model_save_file=model_save_file, model_load_file=model_load_file, model_tag=model_tag)
+        self.model_save_file = model_save_file
+        self.model_load_file = model_load_file
+        self.model_tag = model_tag
 
     def op_conv2d_trans(self, x, W, output_shape):
         return tf.nn.conv2d_transpose(x, W, output_shape,  strides = [1, 1, 1, 1], padding='SAME')
@@ -97,13 +91,12 @@ class SRTrainerDeconDeep(CNNTrainer):
             self.conv_list.append(pre_activation)
         self.net_output_calc = pre_activation
 
-
 if __name__ == "__main__":
     if len(sys.argv) == 1:
         run_tag = "db"
     else:
         run_tag = sys.argv[1]
-        print ("训练数据标签：%s" & sys.argv[1])
+        print("训练数据标签：%s" & sys.argv[1])
 
     cf = configparser.ConfigParser()
     cf.read("trainer.conf")
@@ -118,26 +111,28 @@ if __name__ == "__main__":
     model_file = cf.get(run_tag, "model_file")
     model_save_file = cf.get(run_tag, "model_save_file")
     model_tag = cf.getint(run_tag, "model_tag")
-    train_data_file =  cf.get(run_tag, "train_data_file")
-    itr_num =  cf.getint(run_tag, "itr_num")
+    train_data_file = cf.get(run_tag, "train_data_file")
+    itr_num = cf.getint(run_tag, "itr_num")
     test_result_pefix = cf.get(run_tag, "test_result_pefix")
     learning_rate = cf.getfloat(run_tag, "learning_rate")
     save_step = cf.getint(run_tag, "save_step")
+    reload = cf.getboolean(run_tag,"reload")
 
     data_file_name = train_data_file
     training_data = load_training_data(data_file_name)
-    print ("训练数据共有%d" % len(training_data[0]))
+    print("训练数据共有%d" % len(training_data[0]))
     input = training_data[0]
     output = training_data[1]
 
     with tf.Graph().as_default():
         tr = SRTrainerDeconDeep(model_save_file=model_save_file,
-                       model_load_file=model_file,
-                       model_tag=model_tag)
+                                model_load_file=model_file,
+                                model_tag=model_tag)
         tr.init_param(itr_num=itr_num, batch_size=batch_size, layer_depth=layer_depth,
-                      layer_num=layer_num, input_size=input_size,keep_prob_value = keep_prob_value,
-                      con_num=con_num,decon_num=decon_num, test_dir=test_dir,test_result_pefix=test_result_pefix, learning_rate=learning_rate,
-                        save_step=save_step)
-        tr.set_data(input,output)
+                      layer_num=layer_num, input_size=input_size, keep_prob_value=keep_prob_value,
+                      con_num=con_num, decon_num=decon_num, test_dir=test_dir, test_result_pefix=test_result_pefix,
+                      learning_rate=learning_rate,
+                      save_step=save_step,reload = reload)
+        tr.set_data(input, output)
         tr.setup_frame()
         tr.training()

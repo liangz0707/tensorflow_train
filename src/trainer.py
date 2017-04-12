@@ -1,7 +1,7 @@
 # coding:utf-8
 import tensorflow as tf
-import numpy as np
 import super_restore as sr
+from data_utils import *
 
 class CNNTrainer(object):
     def __init__(self, model_save_file="", model_load_file="", model_tag=0):
@@ -60,7 +60,7 @@ class CNNTrainer(object):
         for i in range(0, self.test_data_size, self.batch_size):
             X = self.test_in[i:i+self.batch_size]
             Y = self.test_out[i:i+self.batch_size]
-            feed_dict = {self.net_input_holder: X, self.net_output_holder: Y, self.keep_prob: self.keep_prob_value}
+            feed_dict = {self.net_input_holder: X, self.net_output_holder: Y, self.keep_prob: 1.0}
             result[i:i+self.batch_size] = self.sess.run([self.net_output_calc], feed_dict=feed_dict)[0][:]
         return result
 
@@ -74,27 +74,26 @@ class CNNTrainer(object):
             self.saver.restore(self.sess, self.model_load_file)
 
         for i in range(self.itr_num):
-            mask = np.random.randint(0, self.data_size, (self.batch_size,), np.int)
+            for step in range(self.data_size // self.batch_size):
+                offset = step * self.batch_size
+                X = self.patch_in[offset:offset+self.batch_size]
+                Y = self.patch_out[offset:offset+self.batch_size]
 
-            X = self.patch_in[mask]
-            Y = self.patch_out[mask]
+                feed_dict = {self.net_input_holder: X, self.net_output_holder: Y, self.keep_prob: self.keep_prob_value}
 
-            feed_dict = {self.net_input_holder: X, self.net_output_holder: Y, self.keep_prob: self.keep_prob_value}
+                _, loss_value = self.sess.run([train_step, self.l2_loss], feed_dict=feed_dict)
 
-            _, loss_value = self.sess.run([train_step, self.l2_loss], feed_dict=feed_dict)
-
-            if i % self.save_step == 0 and i > 0:
-                if self.test_dir != "":
+                if step % 3000 == 0 and step > 0:
                     sr.restore_dir(self.test_dir, self, self.test_result_pefix)
-
-                self.saver.save(self.sess, self.model_save_file, global_step=self.model_tag)
-                feed_dict = {self.net_input_holder: X, self.net_output_holder: Y, self.keep_prob: 1.0}
-                ac = self.sess.run(self.error, feed_dict=feed_dict)
-                print('Step %d: loss = %.2f (%.3f )' % (i, loss_value, ac))
+                if step % 100 == 0 and step > 0:
+                    print("[epoch %2.4f] loss %.4f\t lr %.5f" % (i + (float(step) * self.batch_size / len(self.patch_in)), loss_value,
+                    self.learning_rate))
+                del X, Y
+            self.saver.save(self.sess, self.model_save_file, global_step=self.model_tag)
     '''
     操作简化函数
     '''
-    def variable_weight(self, shape, name, wd=0.01, stddev=0.1):
+    def variable_weight(self, shape, name, wd=0.001, stddev=0.1):
         var = tf.Variable(tf.truncated_normal(shape, stddev=stddev), name=name)
         if wd is not None:
             weight_decay = tf.nn.l2_loss(var) * wd

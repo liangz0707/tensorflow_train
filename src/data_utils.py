@@ -2,6 +2,8 @@ import sys
 import cv2
 import numpy as np
 import math
+from random import shuffle
+import configparser
 if (sys.version == 2):
     import cPickle
 else:
@@ -11,10 +13,11 @@ def load_training_data(data_file_name):
     training_data = None
     with open(data_file_name, 'rb') as f:
         training_data = cPickle.load(f, encoding='iso-8859-1')
-    #
-    # with open("291_cnn_Y_channel.pic", 'rb') as f:
-    #     training_data = cPickle.load(f)
-    return training_data
+
+    index = [i for i in  range(len(training_data[0]))]
+    shuffle(index)
+
+    return training_data[0][index],training_data[1][index]
 
 def getmask(patch_size = 21):
     r = patch_size / 2
@@ -102,4 +105,3 @@ def distanse(p1, p2):
 
 def patch_dist(p1, p2):
     return np.sqrt(np.mean(np.power(p1 - p2,2)))
-
