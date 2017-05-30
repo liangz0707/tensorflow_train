@@ -29,7 +29,7 @@ class CNNTrainer(object):
 
     def init_param(self, layer_depth=32, layer_num=8, input_size=21, input_depth=1 ,
                   kernel_size=3, keep_prob_value = 1.0, USE_POOL = False, USE_NORM = False,
-                   reload = False,batch_size = 64,itr_num=200000,save_step=500, test_dir="", test_result_pefix="",
+                   reload = False,batch_size = 64,itr_num=50, test_dir="", test_result_pefix="",
                    learning_rate=1e-4):
 
         self.layer_depth = layer_depth
@@ -43,7 +43,6 @@ class CNNTrainer(object):
         self.keep_prob_value = keep_prob_value
         self.reload = reload
         self.itr_num = itr_num
-        self.save_step = save_step
         self.batch_size = batch_size
         self.test_dir = test_dir
         self.test_result_pefix=test_result_pefix
@@ -74,6 +73,7 @@ class CNNTrainer(object):
             self.saver.restore(self.sess, self.model_load_file)
 
         for i in range(self.itr_num):
+            loss_list = []
             for step in range(self.data_size // self.batch_size):
                 offset = step * self.batch_size
                 X = self.patch_in[offset:offset+self.batch_size]
@@ -82,18 +82,25 @@ class CNNTrainer(object):
                 feed_dict = {self.net_input_holder: X, self.net_output_holder: Y, self.keep_prob: self.keep_prob_value}
 
                 _, loss_value = self.sess.run([train_step, self.l2_loss], feed_dict=feed_dict)
-
-                if step % 3000 == 0 and step > 0:
-                    sr.restore_dir(self.test_dir, self, self.test_result_pefix)
-                if step % 100 == 0 and step > 0:
-                    print("[epoch %2.4f] loss %.4f\t lr %.5f" % (i + (float(step) * self.batch_size / len(self.patch_in)), loss_value,
-                    self.learning_rate))
                 del X, Y
+
+                loss_list.append(loss_value)
+                if step % 100 == 0 and step > 0:
+                    print("[epoch %2.4f] loss\t%.4f" % (i + (float(step) * self.batch_size / len(self.patch_in)), loss_value))
+
             self.saver.save(self.sess, self.model_save_file, global_step=self.model_tag)
+
+            logfile = open(self.model_save_file + ".csv", 'a')
+            writer = csv.writer(logfile)
+            error_list = sr.restore_dir(self.test_dir, self, self.test_result_pefix)
+            error_list.append(np.mean(loss_list))
+            writer.writerow(error_list)
+            logfile.close()
+
     '''
     操作简化函数
     '''
-    def variable_weight(self, shape, name, wd=0.001, stddev=0.1):
+    def variable_weight(self, shape, name, wd=0.01, stddev=0.1):
         var = tf.Variable(tf.truncated_normal(shape, stddev=stddev), name=name)
         if wd is not None:
             weight_decay = tf.nn.l2_loss(var) * wd

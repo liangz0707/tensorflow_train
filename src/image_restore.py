@@ -16,7 +16,6 @@ if __name__ == '__main__':
     model_file = cf.get("db", "model_file")
     model_save_file = cf.get("db", "model_save_file")
     model_tag =  cf.getint("db", "model_tag")
-    save_step =  cf.getint("db", "save_step")
     reload = cf.getboolean("db","reload")
     test_result_pefix = cf.get("db", "test_result_pefix")
 
@@ -27,7 +26,7 @@ if __name__ == '__main__':
                                     model_load_file=model_file,
                                     model_tag=model_tag)
             tr.init_param(layer_depth=layer_depth, layer_num=layer_num, input_size=input_size, batch_size=batch_size,
-                          keep_prob_value=keep_prob_value,con_num=con_num, decon_num=decon_num,save_step=save_step,
+                          keep_prob_value=keep_prob_value,con_num=con_num, decon_num=decon_num,
                           reload = reload,test_result_pefix=test_result_pefix)
             tr.setup_frame()
             tr.sess.run(tf.global_variables_initializer())

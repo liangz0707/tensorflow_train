@@ -16,11 +16,11 @@ class SRTrainerDeconDeep(CNNTrainer):
 
     def init_param(self, layer_depth=32, layer_num=8, input_size=21, input_depth=1 ,
                   kernel_size=3, keep_prob_value = 1.0, USE_POOL = False, USE_NORM = False,
-                   reload = False,batch_size = 64,itr_num=200000,save_step=500,con_num=9,decon_num=0, test_dir="",test_result_pefix="",
+                   reload = False,batch_size = 64,itr_num=50,con_num=9,decon_num=0, test_dir="",test_result_pefix="",
                    learning_rate=0.0001):
         CNNTrainer.init_param(self, layer_depth=layer_depth, layer_num=layer_num,input_size=input_size,input_depth=input_depth,
                               kernel_size=kernel_size,  keep_prob_value=keep_prob_value, USE_POOL=USE_POOL,
-                              reload=reload,batch_size=batch_size, itr_num=itr_num, save_step=save_step,
+                              reload=reload,batch_size=batch_size, itr_num=itr_num,
                               test_dir=test_dir,test_result_pefix=test_result_pefix,learning_rate=learning_rate)
         self.con_num = con_num
         self.decon_num = decon_num
@@ -115,8 +115,8 @@ if __name__ == "__main__":
     itr_num = cf.getint(run_tag, "itr_num")
     test_result_pefix = cf.get(run_tag, "test_result_pefix")
     learning_rate = cf.getfloat(run_tag, "learning_rate")
-    save_step = cf.getint(run_tag, "save_step")
     reload = cf.getboolean(run_tag,"reload")
+    kernel_size = cf.getint(run_tag, "kernel_size")
 
     data_file_name = train_data_file
     training_data = load_training_data(data_file_name)
@@ -131,8 +131,7 @@ if __name__ == "__main__":
         tr.init_param(itr_num=itr_num, batch_size=batch_size, layer_depth=layer_depth,
                       layer_num=layer_num, input_size=input_size, keep_prob_value=keep_prob_value,
                       con_num=con_num, decon_num=decon_num, test_dir=test_dir, test_result_pefix=test_result_pefix,
-                      learning_rate=learning_rate,
-                      save_step=save_step,reload = reload)
+                      learning_rate=learning_rate,reload = reload,kernel_size=kernel_size)
         tr.set_data(input, output)
         tr.setup_frame()
         tr.training()
